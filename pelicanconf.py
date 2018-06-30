@@ -26,8 +26,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+# SOCIAL = (('You can add links in your config file', '#'),
+#           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -38,3 +38,7 @@ MARKUP = ('md', 'ipynb')                # Add 'ipynb'
 PLUGIN_PATHS = ['pelican-plugins']       # Ensure your plugin path is in it
 PLUGINS = ['ipynb2pelican']             # Name of the plugin
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
+THEME = 'tuxlite_tbs'
+STATIC_PATHS = ['static']
+FAVICON = 'img/favicon.ico'
+CUSTOM_CSS = 'static/custom.css'
