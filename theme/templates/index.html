@@ -9,14 +9,10 @@
 {% if loop.first and not articles_page.has_previous() %}
 
     <div class='article'>
-        <div class="content-title">
-            <a href="{{ SITEURL }}/{{ article.url }}"><h1>{{ article.title }}</h1></a>
-            {% include "metadata.html" %} 
-        </div>
-        
-        <div>{{ article.content }}</div>
-        <hr />
-    </div>
+        <a href="{{ SITEURL }}/{{ article.url }}"><h2>{{ article.title }}</h2></a>
+        <div class= "well small"> {% include "metadata.html" %} </div>
+        <div class="summary">{{ article.summary }} <a class="btn btn-info xsmall" href="{{ SITEURL }}/{{ article.url }}">read more</a></div>
+    </div>	
 		
     {% if loop.length == 1 %}
         {% include 'pagination.html' %}

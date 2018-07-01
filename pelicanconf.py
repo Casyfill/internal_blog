@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+LOAD_CONTENT_CACHE = False
 AUTHOR = 'Zillow_econ / StreetEasy econ'
 SITENAME = 'research blog'
 SITEURL = ''
@@ -20,25 +21,30 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (('One Block Over', 'https://streeteasy.com/blog/'),
+         ('Porchlight', 'https://www.zillow.com/blog/'),
+         ('Zillow Research', 'https://www.zillow.com/research/'),
+         ('Trulia Research', 'https://www.trulia.com/research/'),)
 
 # Social widget
 # SOCIAL = (('You can add links in your config file', '#'),
 #           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
 MARKUP = ('md', 'ipynb')                # Add 'ipynb'
-PLUGIN_PATHS = ['pelican-plugins']       # Ensure your plugin path is in it
+PLUGIN_PATHS = ['pelican-plugins']      # Ensure your plugin path is in it
 PLUGINS = ['ipynb2pelican']             # Name of the plugin
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
-THEME = 'tuxlite_tbs'
+THEME = "./theme"
 STATIC_PATHS = ['static']
 FAVICON = 'img/favicon.ico'
-CUSTOM_CSS = 'static/custom.css'
+CUSTOM_CSS = 'custom.css'
+IPYNB_IGNORE_CSS = True
+IPYNB_REMOVE_EMPTY = True
+SUMMARY_MAX_LENGTH = 100
+
+S3_BUCKET = 'streeteasy-research/internal_blog'
