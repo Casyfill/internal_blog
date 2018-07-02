@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>research blog</title>
+    <title>research blog - Bayesian methods for PI</title>
     <meta name="description" content="">
     <meta name="author" content="Zillow_econ / StreetEasy econ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,39 +55,18 @@
     <div class="row">
 
         <div class="span9">
-        
-
-        
-
-
     <div class='article'>
-        <a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/batch-regex-operations-performance-in-python.html"><h2>Batch Regex operations: performance in python</h2></a>
-        <div class= "well small"> Sat 30 June 2018
-
-by <a class="url fn" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/author/philipp-kats.html">Philipp Kats</a>
- 
-
-
- </div>
-        <div class="summary"><p>There was a discussion recently on whether it is better to use pandas native interface to regex over iterating; As I've been able to imagine even more different angles of attack (say, using regex in SQL, or merging all patterns into one), I decided to check out them all and see how performance is different</p> <a class="btn btn-info xsmall" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/batch-regex-operations-performance-in-python.html">read more</a></div>
-    </div>	
-		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/bayesian-methods-for-pi.html"><h2>Bayesian methods for PI</h2></a>
-        <div class= "well small"> Thu 28 June 2018
+        <div class="content-title">
+            <h1>Bayesian methods for PI</h1>
+Thu 28 June 2018
 
 by <a class="url fn" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/author/simon-rimmele.html">Simon Rimmele</a>
  
 
 
- </div>
-        <div class="summary"><style type="text/css">
+        </div>
+	
+        <div><style type="text/css">
   .reveal p {
     text-align: left;
   }
@@ -113,7 +92,78 @@ by <a class="url fn" href="https://streeteasy-research.s3.amazonaws.com/internal
 * <span class="math">\(P(\theta)\)</span>: the prior/s   </p>
 <h3>Why Stan?</h3>
 <p>Calculating the posterior is difficult because it involves taking an integral over the right side of the equation; that is often intractable. Stan does it for you. </p>
-<h3>How …</h3><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+<h3>How does Stan do it?</h3>
+<p><a href="https://chi-feng.github.io/mcmc-demo/app.html#EfficientNUTS,banana">Check out this demo</a></p>
+<h3>Why not just do optimization ( SGD / Adam / your favorite algorithm? )</h3>
+<p>MCMC sampling estimates a distribution, which gives you access to <strong>uncertainty</strong>. Quantifying uncertainty is the goal of Bayesian statistics. </p>
+<h3>How do I do Bayesian statistics?</h3>
+<ol>
+<li>As an R User? You're in luck:   <ul>
+<li><code>rstanarm</code>: package with a ton of pre-compiled model types, no need to write <code>Stan</code> code.  </li>
+<li><code>brms</code>: package with more esoteric models and flexibility, also no need to write <code>Stan</code>.  </li>
+<li><code>rstan</code>: R interface for <code>Stan</code>, if you want to write your own code. </li>
+<li><code>shinystan</code>: Visual diagnostics for Stan, very practical for checking models. </li>
+</ul>
+</li>
+<li>In Python? Not as easy right now:  <ul>
+<li><code>pystan</code>: Python interface for <code>Stan</code>, you'll need to provide your own <code>Stan</code> code.  </li>
+<li><code>pymc3</code>: More pythonic probabalistic programming package, albeit without access to the excellent <code>Stan</code> algorithm. It can do a few things <code>Stan</code> cannot, like discrete mixture models. </li>
+</ul>
+</li>
+</ol>
+<h3>Stan</h3>
+<h5>Stan Syntax for Linear Regression</h5>
+<div class="math">$$ y = \alpha + \beta x $$</div>
+<div class="math">$$\alpha \sim N(0,10) $$</div>
+<div class="math">$$\beta \sim N(0,10) $$</div>
+<div class="math">$$\sigma \sim Cauchy(0,5) $$</div>
+<div class="highlight"><pre><span></span><span class="kn">data</span> <span class="p">{</span>
+  <span class="kt">int</span><span class="o">&lt;</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">N</span><span class="p">;</span>
+  <span class="kt">vector</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="n">y</span><span class="p">;</span>
+  <span class="kt">vector</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kn">parameters</span> <span class="p">{</span>
+  <span class="kt">real</span> <span class="n">alpha</span><span class="p">;</span>
+  <span class="kt">real</span> <span class="n">beta</span><span class="p">;</span>
+  <span class="kt">real</span><span class="o">&lt;</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">sigma</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kn">model</span> <span class="p">{</span>
+  <span class="n">alpha</span> <span class="o">~</span> <span class="nb">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>    
+  <span class="n">beta</span> <span class="o">~</span> <span class="nb">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+  <span class="n">sigma</span> <span class="o">~</span> <span class="nb">cauchy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">n</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">~</span> <span class="nb">normal</span><span class="p">(</span><span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">sigma</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>How do I pick priors?</h2>
+<ul>
+<li>Remember: <em>Informative</em> != <em>Subjective</em></li>
+</ul>
+<h4>1. Uninformative Priors</h4>
+<ul>
+<li><code>Uniform</code></li>
+<li><code>Jefferys</code> (don't bother)  </li>
+</ul>
+<h4>2. Weakly Informative</h4>
+<ul>
+<li><code>Normal (0,[a large-ish number])</code></li>
+<li><code>Student-T (0,[a large-ish number], [fat tails?])</code></li>
+<li><code>LaPlace(0,[some number])</code>, this is locally equivalent to the L1 penalty (LASSO)</li>
+<li>Constrain a domain to possible values, variance is positive etc...</li>
+</ul>
+<h4>3. Strongly Informative</h4>
+<ul>
+<li>Anything where you are able to provide additional info.</li>
+</ul>
+<h2>More Resources</h2>
+<ul>
+<li><a href="http://mc-stan.org/">Stan website</a></li>
+<li><a href="https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations">Stan: Guide to Priors</a></li>
+<li><a href="http://twiecki.github.io/blog/2017/02/08/bayesian-hierchical-non-centered/">hierarchical models in pymc3</a></li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
         linebreak = "false";
@@ -167,21 +217,11 @@ by <a class="url fn" href="https://streeteasy-research.s3.amazonaws.com/internal
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script> <a class="btn btn-info xsmall" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/bayesian-methods-for-pi.html">read more</a></div>
-    </div>	
-				
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+</script></div>
+	
+        <hr>
 
-    <li class="active"><a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/index.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>
- 
-  
+    </div>
         </div>
         
         <div class="span3">

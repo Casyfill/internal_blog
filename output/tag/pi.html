@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>research blog - Philipp Kats</title>
+    <title>research blog - pi</title>
     <meta name="description" content="">
     <meta name="author" content="Zillow_econ / StreetEasy econ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,22 +61,102 @@
 
 
     <div class='article'>
-        <a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/batch-regex-operations-performance-in-python.html"><h2>Batch Regex operations: performance in python</h2></a>
-        <div class= "well small"> Sat 30 June 2018
+        <a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/bayesian-methods-for-pi.html"><h2>Bayesian methods for PI</h2></a>
+        <div class= "well small"> Thu 28 June 2018
 
-by <a class="url fn" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/author/philipp-kats.html">Philipp Kats</a>
+by <a class="url fn" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/author/simon-rimmele.html">Simon Rimmele</a>
  
 
 
  </div>
-        <div class="summary"><p>There was a discussion recently on whether it is better to use pandas native interface to regex over iterating; As I've been able to imagine even more different angles of attack (say, using regex in SQL, or merging all patterns into one), I decided to check out them all and see how performance is different</p> <a class="btn btn-info xsmall" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/batch-regex-operations-performance-in-python.html">read more</a></div>
+        <div class="summary"><style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }  
+</style>
+
+<h3>Obligatory Bayes Theorem</h3>
+<div class="math">$$P(\theta|x) = \frac{P(x|\theta)P(\theta)}{P(x)}$$</div>
+<ul>
+<li><span class="math">\(x\)</span> is your observed data.  </li>
+<li><span class="math">\(\theta\)</span> are your model parameters.</li>
+</ul>
+<h3>Ignore the denominator</h3>
+<div class="math">$$P(\theta|x) \propto {P(x|\theta)P(\theta)}$$</div>
+<p>
+<em> <span class="math">\(P(\theta|x)\)</span>: the posterior distribution (what we want)<br>
+</em> <span class="math">\(P(x|\theta)\)</span>: the likelihood (what frequentists see)<br>
+* <span class="math">\(P(\theta)\)</span>: the prior/s   </p>
+<h3>Why Stan?</h3>
+<p>Calculating the posterior is difficult because it involves taking an integral over the right side of the equation; that is often intractable. Stan does it for you. </p>
+<h3>How …</h3><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script> <a class="btn btn-info xsmall" href="https://streeteasy-research.s3.amazonaws.com/internal_blog/bayesian-methods-for-pi.html">read more</a></div>
     </div>	
 		
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/author/philipp-kats.html">1</a></li>
+    <li class="active"><a href="https://streeteasy-research.s3.amazonaws.com/internal_blog/tag/pi.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 

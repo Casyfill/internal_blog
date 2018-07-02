@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>research blog - misc</title><link href="https://streeteasy-research.s3.amazonaws.com/internal_blog/" rel="alternate"></link><link href="https://streeteasy-research.s3.amazonaws.com/internal_blog/feeds/misc.atom.xml" rel="self"></link><id>https://streeteasy-research.s3.amazonaws.com/internal_blog/</id><updated>2018-06-28T00:00:00-05:00</updated><entry><title>Bayesian methods for PI</title><link href="https://streeteasy-research.s3.amazonaws.com/internal_blog/bayesian-methods-for-pi.html" rel="alternate"></link><published>2018-06-28T00:00:00-05:00</published><updated>2018-06-28T00:00:00-05:00</updated><author><name>Simon Rimmele</name></author><id>tag:streeteasy-research.s3.amazonaws.com,2018-06-28:/internal_blog/bayesian-methods-for-pi.html</id><summary type="html">&lt;style type="text/css"&gt;
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }  
+&lt;/style&gt;
+
+&lt;h3&gt;Obligatory Bayes Theorem&lt;/h3&gt;
+&lt;div class="math"&gt;$$P(\theta|x) = \frac{P(x|\theta)P(\theta)}{P(x)}$$&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(x\)&lt;/span&gt; is your observed data.  &lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\theta\)&lt;/span&gt; are your model parameters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Ignore the denominator&lt;/h3&gt;
+&lt;div class="math"&gt;$$P(\theta|x) \propto {P(x|\theta)P(\theta)}$$&lt;/div&gt;
+&lt;p&gt;
+&lt;em&gt; &lt;span class="math"&gt;\(P(\theta|x)\)&lt;/span&gt;: the posterior distribution (what we want)&lt;br&gt;
+&lt;/em&gt; &lt;span class="math"&gt;\(P(x|\theta)\)&lt;/span&gt;: the likelihood (what frequentists see)&lt;br&gt;
+* &lt;span class="math"&gt;\(P(\theta)\)&lt;/span&gt;: the prior/s   &lt;/p&gt;
+&lt;h3&gt;Why Stan?&lt;/h3&gt;
+&lt;p&gt;Calculating the posterior is difficult because it involves taking an integral over the right side of the equation; that is often intractable. Stan does it for you. &lt;/p&gt;
+&lt;h3&gt;How …&lt;/h3&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;style type="text/css"&gt;
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }  
+&lt;/style&gt;
+
+&lt;h3&gt;Obligatory Bayes Theorem&lt;/h3&gt;
+&lt;div class="math"&gt;$$P(\theta|x) = \frac{P(x|\theta)P(\theta)}{P(x)}$$&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(x\)&lt;/span&gt; is your observed data.  &lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\theta\)&lt;/span&gt; are your model parameters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Ignore the denominator&lt;/h3&gt;
+&lt;div class="math"&gt;$$P(\theta|x) \propto {P(x|\theta)P(\theta)}$$&lt;/div&gt;
+&lt;p&gt;
+&lt;em&gt; &lt;span class="math"&gt;\(P(\theta|x)\)&lt;/span&gt;: the posterior distribution (what we want)&lt;br&gt;
+&lt;/em&gt; &lt;span class="math"&gt;\(P(x|\theta)\)&lt;/span&gt;: the likelihood (what frequentists see)&lt;br&gt;
+* &lt;span class="math"&gt;\(P(\theta)\)&lt;/span&gt;: the prior/s   &lt;/p&gt;
+&lt;h3&gt;Why Stan?&lt;/h3&gt;
+&lt;p&gt;Calculating the posterior is difficult because it involves taking an integral over the right side of the equation; that is often intractable. Stan does it for you. &lt;/p&gt;
+&lt;h3&gt;How does Stan do it?&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://chi-feng.github.io/mcmc-demo/app.html#EfficientNUTS,banana"&gt;Check out this demo&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Why not just do optimization ( SGD / Adam / your favorite algorithm? )&lt;/h3&gt;
+&lt;p&gt;MCMC sampling estimates a distribution, which gives you access to &lt;strong&gt;uncertainty&lt;/strong&gt;. Quantifying uncertainty is the goal of Bayesian statistics. &lt;/p&gt;
+&lt;h3&gt;How do I do Bayesian statistics?&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;As an R User? You're in luck:   &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rstanarm&lt;/code&gt;: package with a ton of pre-compiled model types, no need to write &lt;code&gt;Stan&lt;/code&gt; code.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brms&lt;/code&gt;: package with more esoteric models and flexibility, also no need to write &lt;code&gt;Stan&lt;/code&gt;.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rstan&lt;/code&gt;: R interface for &lt;code&gt;Stan&lt;/code&gt;, if you want to write your own code. &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;shinystan&lt;/code&gt;: Visual diagnostics for Stan, very practical for checking models. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In Python? Not as easy right now:  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pystan&lt;/code&gt;: Python interface for &lt;code&gt;Stan&lt;/code&gt;, you'll need to provide your own &lt;code&gt;Stan&lt;/code&gt; code.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pymc3&lt;/code&gt;: More pythonic probabalistic programming package, albeit without access to the excellent &lt;code&gt;Stan&lt;/code&gt; algorithm. It can do a few things &lt;code&gt;Stan&lt;/code&gt; cannot, like discrete mixture models. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Stan&lt;/h3&gt;
+&lt;h5&gt;Stan Syntax for Linear Regression&lt;/h5&gt;
+&lt;div class="math"&gt;$$ y = \alpha + \beta x $$&lt;/div&gt;
+&lt;div class="math"&gt;$$\alpha \sim N(0,10) $$&lt;/div&gt;
+&lt;div class="math"&gt;$$\beta \sim N(0,10) $$&lt;/div&gt;
+&lt;div class="math"&gt;$$\sigma \sim Cauchy(0,5) $$&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;data&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kt"&gt;vector&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kt"&gt;vector&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kn"&gt;parameters&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kt"&gt;real&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kt"&gt;real&lt;/span&gt; &lt;span class="n"&gt;beta&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kt"&gt;real&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kn"&gt;model&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;alpha&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt; &lt;span class="nb"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
+  &lt;span class="n"&gt;beta&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt; &lt;span class="nb"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;sigma&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt; &lt;span class="nb"&gt;cauchy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt; &lt;span class="nb"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;alpha&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;beta&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;How do I pick priors?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Remember: &lt;em&gt;Informative&lt;/em&gt; != &lt;em&gt;Subjective&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;1. Uninformative Priors&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Uniform&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Jefferys&lt;/code&gt; (don't bother)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;2. Weakly Informative&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Normal (0,[a large-ish number])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Student-T (0,[a large-ish number], [fat tails?])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LaPlace(0,[some number])&lt;/code&gt;, this is locally equivalent to the L1 penalty (LASSO)&lt;/li&gt;
+&lt;li&gt;Constrain a domain to possible values, variance is positive etc...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;3. Strongly Informative&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Anything where you are able to provide additional info.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;More Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://mc-stan.org/"&gt;Stan website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations"&gt;Stan: Guide to Priors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://twiecki.github.io/blog/2017/02/08/bayesian-hierchical-non-centered/"&gt;hierarchical models in pymc3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="stan"></category><category term="stats"></category><category term="pi"></category></entry></feed>

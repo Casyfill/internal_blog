@@ -35,10 +35,10 @@ DEFAULT_PAGINATION = 5
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-MARKUP = ('md', 'ipynb')                # Add 'ipynb'
-PLUGIN_PATHS = ['pelican-plugins']      # Ensure your plugin path is in it
-PLUGINS = ['ipynb2pelican']             # Name of the plugin
-IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
+MARKUP = ('md', 'ipynb')                     # Add 'ipynb'
+PLUGIN_PATHS = ['pelican-plugins']           # path to plugins
+PLUGINS = ['ipynb2pelican', 'render_math']   # Name of the plugin
+IGNORE_FILES = ['.ipynb_checkpoints']        # Prevent parsing checkpoints files
 THEME = "./theme"
 STATIC_PATHS = ['static']
 FAVICON = 'img/favicon.ico'
