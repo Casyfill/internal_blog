@@ -47,4 +47,4 @@ IPYNB_IGNORE_CSS = True
 IPYNB_REMOVE_EMPTY = True
 SUMMARY_MAX_LENGTH = 100
 
-S3_BUCKET = 'streeteasy-research/internal_blog'
+S3_BUCKET = 'streeteasy-research/blog'

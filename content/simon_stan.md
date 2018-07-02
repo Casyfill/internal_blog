@@ -2,7 +2,9 @@
 title: Bayesian methods for PI
 author: Simon Rimmele
 date: 2018-06-28
+category: stats
 tags: stan, stats, pi
+summary: Quick introduction to Bayesian methods and Stan programming language
 output:
   revealjs::revealjs_presentation:
     theme: simple
