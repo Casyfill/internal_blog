@@ -30,7 +30,7 @@ LINKS = (('One Block Over', 'https://streeteasy.com/blog/'),
 # SOCIAL = (('You can add links in your config file', '#'),
 #           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
@@ -47,4 +47,4 @@ IPYNB_IGNORE_CSS = True
 IPYNB_REMOVE_EMPTY = True
 SUMMARY_MAX_LENGTH = 100
 
-S3_BUCKET = 'streeteasy-research/blog'
+S3_BUCKET = 'philipp-southwest/internal_blog'
