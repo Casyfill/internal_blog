@@ -107,4 +107,4 @@ output/.DS_Store
 
 
 # pelican
-.output/*
+output/*
