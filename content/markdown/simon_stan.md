@@ -1,10 +1,10 @@
 ---
-title: Bayesian methods for PI
+title: Bayesian methods for Neighborhood Price Index
 author: Simon Rimmele
 date: 2018-06-28
 category: stats
 tags: stan, stats, pi
-summary: Quick introduction to Bayesian methods and Stan programming language
+summary: Quick introduction to Bayesian methods and Stan programming language, which StreetEasy uses to estimate Price Index on neighborhood levels
 output:
   revealjs::revealjs_presentation:
     theme: simple

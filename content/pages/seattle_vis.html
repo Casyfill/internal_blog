@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Seattle Weather visualisation</title>
+
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+
+<script src="https://cdn.jsdelivr.net/npm//vega@3.3.1"></script>
+<script src="https://cdn.jsdelivr.net/npm//vega-lite@2.4.3"></script>
+<script src="https://cdn.jsdelivr.net/npm//vega-embed@3.11"></script>
+
+<meta name="date" content="2017-07-16" />
+<meta name="authors" content="Philipp Kats" />
+<meta name="status" content="hidden" />
+
+</head>
+<body>
+  <div id="vis"></div>
+  <script type="text/javascript">
+    var spec = {"config": {"view": {"width": 400, "height": 300}}, "vconcat": [{"mark": "point", "encoding": {"color": {"condition": {"type": "nominal", "field": "weather", "scale": {"domain": ["sun", "fog", "drizzle", "rain", "snow"], "range": ["#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd"]}, "selection": "selector001"}, "value": "lightgray"}, "size": {"type": "quantitative", "field": "precipitation", "scale": {"range": [5, 200]}}, "x": {"type": "temporal", "axis": {"title": "Date"}, "field": "date", "timeUnit": "monthdate"}, "y": {"type": "quantitative", "axis": {"title": "Maximum Daily Temperature (C)"}, "field": "temp_max", "scale": {"domain": [-5, 40]}}}, "height": 300, "selection": {"selector001": {"type": "interval", "encodings": ["x"]}}, "transform": [{"filter": {"selection": "selector002"}}], "width": 600}, {"mark": "bar", "encoding": {"color": {"condition": {"type": "nominal", "field": "weather", "scale": {"domain": ["sun", "fog", "drizzle", "rain", "snow"], "range": ["#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd"]}, "selection": "selector002"}, "value": "lightgray"}, "x": {"type": "quantitative", "aggregate": "count"}, "y": {"type": "nominal", "field": "weather"}}, "selection": {"selector002": {"type": "multi", "encodings": ["color"]}}, "transform": [{"filter": {"selection": "selector001"}}], "width": 600}], "data": {"url": "https://vega.github.io/vega-datasets/data/seattle-weather.csv"}, "title": "Seattle Weather: 2012-2015", "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
+    var embed_opt = {"mode": "vega-lite"};
+
+    function showError(el, error){
+        el.innerHTML = ('<div class="error">'
+                        + '<p>JavaScript Error: ' + error.message + '</p>'
+                        + "<p>This usually means there's a typo in your chart specification. "
+                        + "See the javascript console for the full traceback.</p>"
+                        + '</div>');
+        throw error;
+    }
+    const el = document.getElementById('vis');
+    vegaEmbed("#vis", spec, embed_opt)
+      .catch(error => showError(el, error));
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 title: NYC DataViz: Declarative approach to storytelling with Vega
 author: Philipp Kats
-date: 2018-06-28
+date: 2018-07-17
 category: presentation
 tags: vis, Vega, streeteasy
 summary: Extended deck of slides for the presentation on Vega and how we use it at StreetEasy (NYC DataVis Meetup)
