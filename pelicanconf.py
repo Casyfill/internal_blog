@@ -35,16 +35,20 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
+STATIC_PATHS = ['static']
+PAGE_PATHS = ['pages']
+ARTICLE_PATHS = ['posts']
+STATIC_EXCLUDE_SOURCES = False
 MARKUP = ('md', 'ipynb')                     # Add 'ipynb'
 PLUGIN_PATHS = ['pelican-plugins']           # path to plugins
 PLUGINS = ['ipynb2pelican', 'render_math']   # Name of the plugin
 IGNORE_FILES = ['.ipynb_checkpoints']        # Prevent parsing checkpoints files
 THEME = "./theme"
-STATIC_PATHS = ['static']
 FAVICON = 'img/favicon.ico'
 CUSTOM_CSS = 'custom.css'
 IPYNB_IGNORE_CSS = True
 IPYNB_REMOVE_EMPTY = True
+TYPOGRIFY = True
 SUMMARY_MAX_LENGTH = 100
 
 S3_BUCKET = 'philipp-southwest/internal_blog'
